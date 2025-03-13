@@ -9,11 +9,20 @@ window.addEventListener('resize', onWindowResize);
 document.addEventListener("DOMContentLoaded", function () {
     const splash_block = document.querySelector(".splash") as HTMLElement;
 
+    let image_index = 0;
     const profile_image = document.querySelector("#banner>img") as HTMLImageElement;
-    let image_index = 1;
+    const images_set: {uri:string, loaded:boolean}[] = [{uri:"me.jpg", loaded:false},{uri:"me.png", loaded:false},{uri:"me2.jpg", loaded:false},{uri:"me30.png", loaded:false},{uri:"me4.jpg", loaded:false}]
+    images_set.map( (img: {uri:string, loaded:boolean}) => {
+        const el = document.createElement("img") as HTMLImageElement  // new Image()
+        el.src = "app/assets/images/".concat(img.uri)
+        el.onload = ()=>{
+            img.loaded = true
+        }
+    })
     profile_image.addEventListener('transitionend', function handler(event) {
         if (!(event.target as HTMLElement).classList.contains("fade-out")) return
-        profile_image.src = "app/assets/images/".concat( ["me.jpg","me.png","me2.jpg","me30.png","me4.jpg"][image_index%5] )
+        const available_images = images_set.filter( img => img.loaded )
+        profile_image.src = "app/assets/images/".concat( available_images[image_index%available_images.length].uri )
         image_index++;
         profile_image.classList.remove('fade-out');
     });
@@ -52,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     backDelay: 1500,
                     typeSpeed: 35,
                     onStringTyped: ()=>{
+                        if ( images_set.filter( img => img.loaded ).length < 2) return
                         profile_image.classList.add('fade-out');
                     }
                 })

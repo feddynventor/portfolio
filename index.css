@@ -82,13 +82,17 @@ body {
 }
 
 #banner {
+    position: unset;
+    line-height: 1.2em;
     opacity: 0;
     display: flex;
-    align-items: center;
     justify-content: left;
     height: 192px;
-    margin: 0;
+    margin-top: 0.5em;
     transition: opacity 0.7s ease;
+}
+#banner > div {
+    max-width: 70%;
 }
 #banner > img {
     align-self: self-end;
