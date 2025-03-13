@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 })
                 new Typed("#profiles", {
-                    strings: ["<p><a target=_blank href='https://linkedin.com/in/fedele-cavaliere'>LinkedIn</a></p><p><a target=_blank href='https://github.com/feddynventor'>GitHub</a></p><p><a target=_blank href='https://t.me/feddynventor'>Telegram</a></p><p>&#x1F4E7; <a target=_blank href='mailto:cavaliere12.web@gmail.com'>Email</a></p><p>&#x1F4D3; <a target=_blank href='https://fedele.cc/resume'>my Resume</a></p>"],
+                    strings: ["<p><a target=_blank href='https://linkedin.com/in/fedele-cavaliere'>LinkedIn</a> ~ <a target=_blank href='https://github.com/feddynventor'>GitHub</a> ~ <a target=_blank href='https://t.me/feddynventor'>Telegram</a></p><p>&#x1F4E7; <a target=_blank href='mailto:cavaliere12.web@gmail.com'>Email</a> ~ &#x1F4D3; <a target=_blank href='https://fedele.cc/resume'>my Resume</a></p>"],
                     typeSpeed: 35,
                     showCursor: false
                 })

@@ -27,6 +27,7 @@ const video = (src: string): HTMLDivElement => {
     vid.loop = true
     vid.autoplay = true
     vid.setAttribute("src", src)
+    vid.setAttribute("aria-label", "Some DEMO videos! yum")
     el.appendChild(vid)
     vid.play()
     return el
