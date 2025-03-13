@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let image_index = 0;
     const profile_image = document.querySelector("#banner>img") as HTMLImageElement;
-    const images_set: {uri:string, loaded:boolean}[] = [{uri:"me.jpg", loaded:false},{uri:"me.png", loaded:false},{uri:"me2.jpg", loaded:false},{uri:"me30.png", loaded:false},{uri:"me4.jpg", loaded:false}]
+    const images_set: {uri:string, loaded:boolean}[] = [{uri:"me2.png", loaded:false},{uri:"me.png", loaded:false},{uri:"me3.png", loaded:false},{uri:"me4.png", loaded:false},{uri:"me5.png", loaded:false}]
     images_set.map( (img: {uri:string, loaded:boolean}) => {
         const el = document.createElement("img") as HTMLImageElement  // new Image()
         el.src = "app/assets/images/".concat(img.uri)
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 })
                 new Typed("#profiles", {
-                    strings: ["<p><a target=_blank href='https://linkedin.com/in/fedele-cavaliere'>LinkedIn</a></p><p><a target=_blank href='https://github.com/feddynventor'>GitHub</a></p><p><a target=_blank href='https://t.me/feddynventor'>Telegram</a></p><p>&#x1F4E7; <a target=_blank href='mailto:cavaliere12.web@gmail.com'>Email</a></p>"],
+                    strings: ["<p><a target=_blank href='https://linkedin.com/in/fedele-cavaliere'>LinkedIn</a></p><p><a target=_blank href='https://github.com/feddynventor'>GitHub</a></p><p><a target=_blank href='https://t.me/feddynventor'>Telegram</a></p><p>&#x1F4E7; <a target=_blank href='mailto:cavaliere12.web@gmail.com'>Email</a></p><p>&#x1F4D3; <a target=_blank href='https://fedele.cc/resume'>my Resume</a></p>"],
                     typeSpeed: 35,
                     showCursor: false
                 })
