@@ -51,10 +51,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     strings: [
                         "I am a Software Engineer &#x1F4BB;",
                         "I am graduated in Solo-Travelling &#x1F30D; &#x1F3F3;&#xFE0F;&#x200D;&#x1F308;",
-                        "I am a broadcasting enthusiast &#x1F4FA;",
+                        "I am a broadcasting enthusiast &#x1F4FA; &#x1F3A5;",
                         "I am a System Integrator &#x1F50C;",
                         "I am an airplanes lover &#x1F6EB;",
-                        "I am proudly italian &#x1F1EE;&#x1F1F9; &#x1F1EA;&#x1F1FA;"
+                        "I am proudly italian &#x1F1EE;&#x1F1F9; &#x1F1EA;&#x1F1FA; &#x1F35D;",
+                        "I am blessed by lovely friends &#x1F308;"
                     ],
                     loop: true,
                     smartBackspace: true,

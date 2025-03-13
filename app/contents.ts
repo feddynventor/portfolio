@@ -65,6 +65,13 @@ export default [{
         "It's all about causal relationships, essential for robust and scalable solutions."
     ],
 },{
+    title: 'my degree &#x1F393;',
+    content: [
+        "My degree regards computer science and automation engineering",
+        "Contextually my <hl>thesis brings automation to video streaming</hl>, aiming to make the distribution process more efficient and suitable for congested networks in the last-mile-delivery",
+        "currently WIP ~ aiming to share everything &#x1F308;"
+    ],
+},{
     title: 'willing to help &#x2B50;',
     content: [
         "whatever I my work is, I do the most to <hl>share it</hl>. It's foundational that critical code bases stay opened.",
