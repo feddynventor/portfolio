@@ -31,11 +31,8 @@ export class Paragraph {
             if (!this.isDiv(content)) {
                 const contentElement = document.createElement('p')
                 contentElement.innerHTML = "~ ".concat(content);
-                // if (index>0) this.block.appendChild(document.createElement('hr'));
-                // this.block.appendChild(contentElement);
                 this.content_elements.push(contentElement);
             } else {
-                // this.block.appendChild(content);
                 this.content_elements.push(content);
             }
         })
@@ -52,8 +49,15 @@ export class Paragraph {
             
             this.content_elements.forEach((element, content_index) => {
                 element.style.animationName = 'fadeInClear';
-                element.style.animationDelay = (content_index * 120).toString().concat('ms');
+                element.style.animationDelay = (content_index * 80).toString().concat('ms');
+
                 this.block.appendChild(element);
+
+                if (element.querySelector("video") !== null) {
+                    const minimum_height = this.block.clientWidth*9/16;
+                    if (minimum_height%32<16) element.style.height = (Math.floor(minimum_height/32)*32).toString().concat("px")
+                    else element.style.height = (Math.ceil(minimum_height/32)*32).toString().concat("px")
+                }
 
                 const rows = Math.floor(element.offsetHeight / 32);
                 this.generateAddresses(row_index, rows).forEach((address, sub_content_index) => {
@@ -65,7 +69,7 @@ export class Paragraph {
                     
                     addressList.appendChild(addressItem);
 
-                    addressItem.style.animationDelay = (content_index * 120).toString().concat('ms');
+                    addressItem.style.animationDelay = (content_index * 80).toString().concat('ms');
                     if (sub_content_index==0 || content_index==0) addressItem.style.animationName = 'fadeInClear';
                     else addressItem.style.animationName = 'fadeIn';
                 })

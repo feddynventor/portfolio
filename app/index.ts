@@ -4,36 +4,65 @@ import contents from './contents';
 
 // must check if fetch is available and DOM is ready
 let content_paragraphs: Promise<Paragraph[]> | null = null;
-let title: {
-    text_element: HTMLElement,
-    animation: Typed,
-    height?: number
-}
 
 window.addEventListener('resize', onWindowResize);
 document.addEventListener("DOMContentLoaded", function () {
     const splash_block = document.querySelector(".splash") as HTMLElement;
+
+    const profile_image = document.querySelector("#banner>img") as HTMLImageElement;
+    let image_index = 1;
+    profile_image.addEventListener('transitionend', function handler(event) {
+        if (!(event.target as HTMLElement).classList.contains("fade-out")) return
+        profile_image.src = "app/assets/images/".concat( ["me.jpg","me.png","me2.jpg","me30.png","me4.jpg"][image_index%5] )
+        image_index++;
+        profile_image.classList.remove('fade-out');
+    });
 
     const main_content = document.querySelector(".main") as HTMLDivElement;
     content_paragraphs = new Promise((resolve, _) => resolve( contents.map(
         block => new Paragraph(block, main_content)
     )))
 
-    title = {
-        text_element: document.querySelector(".splash-text") as HTMLElement,
-        animation: new Typed(".splash-text", {
-            strings: ["$ hexdump ~/fedele.profile"],
-            typeSpeed: 35,
-            onComplete: function (self: Typed) {
-                setTimeout(function () {
-                    if (splash_block.classList.contains("move-up")) return;
-                    splash_block.classList.add("move-up");
-                    title.height = title.text_element.offsetHeight;
+    new Typed("#splash-text", {
+        strings: ["$ hexdump ~/fedele.profile"],
+        typeSpeed: 35,
+        onComplete: function (self: Typed) {
+            setTimeout(function () {
+                if (splash_block.classList.contains("move-up")) return;
+                splash_block.classList.add("move-up");
+                let animated = false
+                splash_block.addEventListener('transitionend', (event) => {
+                    if (!animated) animated=true
+                    else return
+                    const header_height = splash_block.getBoundingClientRect().bottom;
+                    document.querySelector<HTMLDivElement>(".content")!.style.marginTop = header_height.toString().concat("px")
                     animate_page();
-                }, 250);
-            },
-        })
-    };
+                })
+                new Typed("#subtitle", {
+                    strings: [
+                        "I am a Software Engineer &#x1F4BB;",
+                        "I am graduated in Solo-Travelling &#x1F30D; &#x1F3F3;&#xFE0F;&#x200D;&#x1F308;",
+                        "I am a broadcasting enthusiast &#x1F4FA;",
+                        "I am a System Integrator &#x1F50C;",
+                        "I am an airplanes lover &#x1F6EB;",
+                        "I am proudly italian &#x1F1EE;&#x1F1F9; &#x1F1EA;&#x1F1FA;"
+                    ],
+                    loop: true,
+                    smartBackspace: true,
+                    backDelay: 1500,
+                    typeSpeed: 35,
+                    onStringTyped: ()=>{
+                        profile_image.classList.add('fade-out');
+                    }
+                })
+                new Typed("#profiles", {
+                    strings: ["<p><a target=_blank href='https://linkedin.com/in/fedele-cavaliere'>LinkedIn</a></p><p><a target=_blank href='https://github.com/feddynventor'>GitHub</a></p><p><a target=_blank href='https://t.me/feddynventor'>Telegram</a></p><p>&#x1F4E7; <a target=_blank href='mailto:cavaliere12.web@gmail.com'>Email</a></p>"],
+                    typeSpeed: 35,
+                    showCursor: false
+                })
+            }, 250);
+        },
+    })
 
 });
 

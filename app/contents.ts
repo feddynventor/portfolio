@@ -17,6 +17,20 @@ const button_list = (contents: Button[]): HTMLDivElement => {
 
     return buttons;
 }
+// 16:9 videos only
+// see paragraph.ts:38
+const video = (src: string): HTMLDivElement => {
+    const el = document.createElement('div') as HTMLDivElement;
+    el.classList.add("video")
+    const vid = document.createElement('video') as HTMLVideoElement;
+    vid.muted = true
+    vid.loop = true
+    vid.autoplay = true
+    vid.setAttribute("src", src)
+    el.appendChild(vid)
+    vid.play()
+    return el
+}
 
 export default [{
     title: '$( whoami )',
@@ -37,14 +51,21 @@ export default [{
     title: 'my work &#x1F529;',
     content: [
         "I've realized a <hl>video playout</hl> system for a <b>local broadcaster</b> <a href='https://news24.city'>news24.city</a> based on chromium and leveraging linux",
-        "I've integrated <hl>new production processes</hl> so satisfing compliance with the <b>Hybrid Broadcast Broadband TV</b> standard",
+        "I've integrated <hl>new production processes</hl> so satisfing compliance with the <b>Hybrid Broadcast Broadband TV</b> standard. Here I've mastered transpilation and <hl>Node.js toolchains</hl>",
         "I've streamlined processes at <b><a href='https://telesveva.it'>Telesveva</a></b> with a <hl>custom-made framework for CMS</hl> with typescript and htmx",
-        "<div class='video'><video autoplay muted loop src='app/assets/videos/telesveva.webm'></video></div>",
-        "<div class='video'><video autoplay muted loop src='app/assets/videos/cms.webm'></video></div>",
-        "<div class='video'><video autoplay muted loop src='app/assets/videos/news24.webm'></div>"
+        video('app/assets/videos/telesveva.webm'),
+        video('app/assets/videos/news24.webm'),
+        video('app/assets/videos/cms.webm')
     ]
 },{
-    title: 'willing to help',
+    title: 'stop abstracting &#x1F3A8;',
+    content: [
+        "<hl>Start thinkering! &#x1F9D0;</hl>",
+        "We don't just move data... we interpret data, all the time.",
+        "It's all about causal relationships, essential for robust and scalable solutions."
+    ],
+},{
+    title: 'willing to help &#x2B50;',
     content: [
         "whatever I my work is, I do the most to <hl>share it</hl>. It's foundational that critical code bases stay opened.",
         button_list([
@@ -54,23 +75,28 @@ export default [{
         button_list([
             { title: 'optimusq', caption: 'queue management for stores, with display and stations endpoints in Qt', tech_stack: ["Python"] }
         ]),
+        button_list([
+            { title: 'spotimeet', caption: 'social network in MongoDB and React blending many external data from Spotify', tech_stack: ["React", "ExpressJS", "MongoDB"] }
+        ]),
         "many many other <b>little ~ crazy ~ fancy</b> tools",
         button_list([
             { title: 'cmaf-tcp', caption: 'studying video distribution, syncing players across the networks', tech_stack: ["Golang"]},
             { title: 'horizon-seek', caption: 'playground for researches in Computer vision with OpenCV', tech_stack: ["Python"]}
         ]),
         button_list([
-            { title: 'obs-blank', caption: 'your production mixer goes to black? Let OBS show a peaceful standby message', tech_stack: ["Golang"] },
+            { title: 'obs-blank', caption: 'your production mixer <i>Fades to black</i>? Let OBS show a peaceful standby message', tech_stack: ["Golang"] },
             { title: 'wordpress-bash', caption: 'crazy tool for double checking your audience is up to date with the news', tech_stack: ["Bash", "filesystem&#x1F606;"] }
         ]),
         button_list([
-            { title: 'spotimeet', caption: 'social network in MongoDB and React blending many external data from Spotify', tech_stack: ["React", "ExpressJS", "MongoDB"] }
+            { title: 'GitHub', caption: "Whenever you're looking for me... you find me here!", tech_stack: [], link: "https://github.com/feddynventor" },
         ])
     ]
 },{
-    title: 'stop abstracting &#x1F3A8;',
+    title: 'hit me up! &#x1F680;',
     content: [
-        "<hl>Start thinkering! &#x1F9D0;</hl>",
-        "My work focuses on a disciplined understanding of underlying system mechanics, causal relationships, and dynamic interactions essential for robust, scalable solutions"
-    ],
+        button_list([
+            { title: 'Telegram', caption: "ready to ear from you!", tech_stack: [], link: "https://t.me/feddynventor" },
+        ]),
+        "made by feddy in one morning... because I feel inspired so randomly"
+    ]
 }] as ParagraphType[];
