@@ -1,5 +1,4 @@
 import { ParagraphType } from "./paragraph";
-import { Carousel } from "./carousel";
 
 type Button = {title: string, caption: string, tech_stack: string[], link?: string}
 const button_list = (contents: Button[]): HTMLDivElement => {
@@ -51,17 +50,21 @@ export default [{
     content: [
         "I'm a <b>software engineer</b> with a strong focus on <b>simplicity</b> ~ conquering <hl>low-level understanding</hl> of frameworks, networks and operating systems",
         "I'm a <hl>Broadcasting enthusiast!</hl> &#x1F4FA; dealing with <b>critical infrastructure</b>; system design is my bread &#x1F35E;",
-        "Travelling frees my <b>spirit</b> &#x1F1EE;&#x1F1E9; &#x1F1F2;&#x1F1E6; &#x1F1E9;&#x1F1EA; &#x1F1EA;&#x1F1F8; &#x1F1F3;&#x1F1F1; &#x1F1EC;&#x1F1E7;"
+        "Travelling frees my <b>spirit</b> &#x1F1EE;&#x1F1E9; &#x1F1F2;&#x1F1E6; &#x1F1E9;&#x1F1EA; &#x1F1EA;&#x1F1F8; &#x1F1F3;&#x1F1F1; &#x1F1EC;&#x1F1E7;",
+        "I've streamlined processes at <b><a href='https://telesveva.it'>Telesveva</a></b> with a <hl>custom-made framework for CMS</hl> with typescript and htmx",
     ],
 },{
     title: 'my work &#x1F529;',
     content: [
-        "I've realized a <hl>video playout</hl> system for a <b>local broadcaster</b> <a href='https://news24.city'>news24.city</a> based on chromium and leveraging linux",
-        "I've integrated <hl>new production processes</hl> so satisfing compliance with the <b>Hybrid Broadcast Broadband TV</b> standard. Here I've mastered transpilation and <hl>Node.js toolchains</hl>",
-        "I've streamlined processes at <b><a href='https://telesveva.it'>Telesveva</a></b> with a <hl>custom-made framework for CMS</hl> with typescript and htmx",
+        "Following some <hl> demo videos! </hl> &#x1F3A5;",
+        "<hl>Hybrid Broadcasting</hl> via web technologies. Here I've mastered transpilation and <hl>Node.js toolchains</hl>, transpiling TypeScript to ES5 as HbbTV standard",
+        "On the backend I've integrated <hl>new production processes</hl> so to deploy a custom CDN and content management",
         video('app/assets/videos/telesveva.webm'),
+        "I've realized a <hl>video playout</hl> system for a <b>local broadcaster</b> <a href='https://news24.city'>news24.city</a>",
+        "What you see is a Chromium instance playing <b>queues of content</b>. The schedule logic is remotely managed from a CMS which is <hl>designed to guarantee consistency</hl>. I call it stateful-heaven",
         video('app/assets/videos/news24.webm'),
-        video('app/assets/videos/cms.webm')
+        "This is the CMS, capable of maitaining <hl>stateful connection</hl> with the playout on one side and <b>many external content sources</b>. Statefulness is made easier through htmx which replicates the <hl>server state</hl> via <hl>frontend templating</hl>",
+        video('app/assets/videos/cms.webm'),
     ]
 },{
     title: 'stop abstracting &#x1F3A8;',
@@ -83,7 +86,7 @@ export default [{
         "whatever I my work is, I do the most to <hl>share it</hl>. It's foundational that critical code bases stay opened.",
         button_list([
             { title: 'stateful-heaven', caption: 'custom-made SSR web framework', tech_stack: ["htmx", "TypeScript", "MongoDB", "swagger"] },
-            { title: 'kiosk-sse-playlist', caption: 'chromium based video playout', tech_stack: ["TypeScript", "<a target=_blank href='https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API'>MSE</a>", "<a target=_blank href='https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events'>SSE</a>"] }
+            { title: 'kiosk-sse-playlist', caption: 'chromium based video playout', tech_stack: ["TypeScript", "WebAPI", "<a target=_blank href='https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API'>MSE</a>", "<a target=_blank href='https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events'>SSE</a>"] }
         ]),
         button_list([
             { title: 'optimusq', caption: 'queue management for stores, with display and stations endpoints in Qt', tech_stack: ["Python"] }
@@ -99,6 +102,9 @@ export default [{
         button_list([
             { title: 'obs-blank', caption: 'your production mixer <i>Fades to black</i>? Let OBS show a peaceful standby message', tech_stack: ["Golang"] },
             { title: 'wordpress-bash', caption: 'crazy tool for double checking your audience is up to date with the news', tech_stack: ["Bash", "filesystem&#x1F606;"] }
+        ]),
+        button_list([
+            { title: 'portfolio', caption: 'hey I just built my portfolio so easily maitainable (but a bit too quickly)', tech_stack: ["Typescript", "CSS"] },
         ]),
         button_list([
             { title: 'GitHub', caption: "Whenever you're looking for me... you find me here!", tech_stack: [], link: "https://github.com/feddynventor" },
