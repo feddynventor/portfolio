@@ -19,17 +19,22 @@ const button_list = (contents: Button[]): HTMLDivElement => {
 }
 // 16:9 videos only
 // see paragraph.ts:38
-const video = (src: string): HTMLDivElement => {
+const video = (src: string, caption?: string): HTMLDivElement => {
     const el = document.createElement('div') as HTMLDivElement;
     el.classList.add("video")
+    const spinner = document.createElement('div') as HTMLDivElement;
+    spinner.classList.add("spinner")
+    const description = document.createElement('p') as HTMLParagraphElement;
+    description.innerHTML = caption || "Loading video...";
     const vid = document.createElement('video') as HTMLVideoElement;
     vid.muted = true
     vid.loop = true
     vid.autoplay = true
     vid.setAttribute("src", src)
-    vid.setAttribute("aria-label", "Some DEMO videos! yum")
+    vid.setAttribute("aria-label", caption || "Some DEMO videos! yum")
+    el.appendChild(description)
+    el.appendChild(spinner)
     el.appendChild(vid)
-    vid.play()
     return el
 }
 

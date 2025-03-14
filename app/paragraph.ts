@@ -46,31 +46,39 @@ export class Paragraph {
             const addressList = document.querySelector('.addresses') as HTMLElement;
             this.block.style.animationName = 'fadeInClear';
             let row_index = starting_row;
-            
+
             this.content_elements.forEach((element, content_index) => {
                 element.style.animationName = 'fadeInClear';
                 element.style.animationDelay = (content_index * 80).toString().concat('ms');
 
                 this.block.appendChild(element);
 
-                if (element.querySelector("video") !== null) {
-                    const minimum_height = this.block.clientWidth*9/16;
-                    if (minimum_height%32<16) element.style.height = (Math.floor(minimum_height/32)*32).toString().concat("px")
-                    else element.style.height = (Math.ceil(minimum_height/32)*32).toString().concat("px")
+                const vid = element.querySelector("video");
+                if (vid) {
+                    const minimum_height = this.block.clientWidth * 9 / 16;
+                    if (minimum_height % 32 < 16) element.style.height = (Math.floor(minimum_height / 32) * 32).toString().concat("px")
+                    else element.style.height = (Math.ceil(minimum_height / 32) * 32).toString().concat("px")
+                    const play = function () {
+                        (element.querySelector(".spinner") as HTMLDivElement).style.display = 'none';
+                        vid.play()
+                        vid.removeEventListener('canplay', play);
+                    }
+                    if (vid.readyState >= 3) play();
+                    else vid.addEventListener('canplay', play);
                 }
 
                 const rows = Math.floor(element.offsetHeight / 32);
                 this.generateAddresses(row_index, rows).forEach((address, sub_content_index) => {
                     const addressItem = document.createElement('div');
-                    
+
                     addressItem.className = 'address';
-                    addressItem.id = "addr".concat((row_index+sub_content_index).toString());
+                    addressItem.id = "addr".concat((row_index + sub_content_index).toString());
                     addressItem.textContent = address;
-                    
+
                     addressList.appendChild(addressItem);
 
                     addressItem.style.animationDelay = (content_index * 80).toString().concat('ms');
-                    if (sub_content_index==0 || content_index==0) addressItem.style.animationName = 'fadeInClear';
+                    if (sub_content_index == 0 || content_index == 0) addressItem.style.animationName = 'fadeInClear';
                     else addressItem.style.animationName = 'fadeIn';
                 })
                 row_index += rows;
@@ -80,13 +88,14 @@ export class Paragraph {
                 resolve(row_index);
             }
 
-        )})
+            )
+        })
     }
 
 
     private generateAddresses = (start: number, count: number): string[] => {
         const addresses = [];
-        for (let i = start; i < start+count; i++) {
+        for (let i = start; i < start + count; i++) {
             addresses.push("0x".concat((i * 0x30).toString(16).padStart(4, '0')));
         }
         return addresses;

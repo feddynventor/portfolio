@@ -70,11 +70,11 @@ body {
 }
 
 #subtitle {
-    font-size: 0.8em;
+    font-size: 0.7em;
 }
 
 #profiles {
-    font-size: 0.6em;
+    font-size: 0.55em;
     line-height: 32px;
 }
 #profiles p {
@@ -292,7 +292,7 @@ a {
 
 div.video {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     /* height: 192px; */
     margin: 0 5px;
@@ -302,4 +302,31 @@ div.video {
 div.video > video {
     max-width: 100%;
     max-height: 95%;
+    z-index: 2;
+}
+div.video > p {
+    position: absolute;
+    width: 90%;
+    margin: 4px;
+    text-align: center;
+    font-weight: bold;
+}
+
+div.video > .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+    display: block;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
